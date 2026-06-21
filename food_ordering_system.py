@@ -15,7 +15,8 @@ class FoodApp:
         self.admin_details = {}
         self.user_details = {}
         self.food = {}
-        self.food_id = len(self.food) + 1  # adding +1 in exixting dict item number
+        # adding +1 in exixting dict item number
+        self.food_id = len(self.food) + 1
         self.foodkart = {}
         self.or_history = len(self.foodkart) + 1
         self.order = {}
@@ -75,12 +76,14 @@ class FoodApp:
         '''You Can edit available food items from list Here'''
         try:
             if len(self.food) > 0:  # to check if list is empty or not
-                print("\n1.Edit Food Name\n2.Edit Quantity of food\n3.Edit Price\n4.Edit Discount\n5.Edit stock")
+                print(
+                    "\n1.Edit Food Name\n2.Edit Quantity of food\n3.Edit Price\n4.Edit Discount\n5.Edit stock")
                 while True:
                     Echoice = int(input("\nEntre Choice From Above List\n"))
                     if Echoice == 1:
                         new_name = input("Entre New Food Name\n")
-                        self.food[foodid]['NAME'] = new_name  # to edit dict values with new values
+                        # to edit dict values with new values
+                        self.food[foodid]['NAME'] = new_name
                         print('\n!! Name updated Successfully !!')
                         break
                     elif Echoice == 2:
@@ -215,12 +218,14 @@ class FoodApp:
                     " 1.Update Your Name\n 2.Update Your Phone Number\n 3.Upadte Your Email\n 4.Update Your Address\n 5.Update Your Password\n 6.Back")
                 upchoice = input('Entre Your Choice\n')
                 if upchoice == '1':
-                    print(f"Your Currunt Profile Name is{self.user_details['NAME']}")
+                    print(
+                        f"Your Currunt Profile Name is{self.user_details['NAME']}")
                     newname = input("Entre new Name \n")
                     self.user_details['NAME'] = newname
                     print(" Name Updated")
                 elif upchoice == '2':
-                    print(f"Your Currunt Phone Number is{self.user_details['PHONE']}")
+                    print(
+                        f"Your Currunt Phone Number is{self.user_details['PHONE']}")
                     while True:
                         newnum = input("Entre new Number \n")
                         if newnum.isnumeric() == True:
@@ -244,7 +249,8 @@ class FoodApp:
                         else:
                             print("Invalid Email")
                 elif upchoice == '4':
-                    print(f"Your Currunt Address is{self.user_details['ADDRESS']}")
+                    print(
+                        f"Your Currunt Address is{self.user_details['ADDRESS']}")
                     newadd = input("Entre new Email \n")
                     self.user_details['ADDRESS'] = newadd
                     print("Address Upadted")
@@ -272,7 +278,8 @@ class FoodApp:
             if self.food[food_id]['STOCK'] > 0:
                 if food_id in self.foodkart.keys():
                     self.foodkart[food_id]["QTY"] = self.foodkart[food_id]["QTY"] + 1
-                    self.foodkart[food_id]['TOTAL'] = self.foodkart[food_id]['TOTAL'] + self.food[food_id]['PRICE']
+                    self.foodkart[food_id]['TOTAL'] = self.foodkart[food_id]['TOTAL'] + \
+                        self.food[food_id]['PRICE']
                     self.foodkart[food_id] = {"NAME": self.food[food_id]['NAME'], "PRICE": self.food[food_id]['PRICE'],
                                               "QTY": self.foodkart[food_id]["QTY"],
                                               "TOTAL": self.foodkart[food_id]['TOTAL']}
@@ -282,7 +289,8 @@ class FoodApp:
                                               "QTY": 1, "TOTAL": self.food[food_id]['PRICE']}
                     self.food[food_id]['STOCK'] = self.food[food_id]['STOCK'] - 1
             else:
-                print(F" {self.food[food_id]['NAME']} Not Available At This Moment")
+                print(
+                    F" {self.food[food_id]['NAME']} Not Available At This Moment")
         else:
             print(f'Opps!!! You Entered {food_id} is Wrong ID')
 
@@ -315,7 +323,8 @@ class FoodApp:
         '''function for delete food items from list'''
         if len(self.foodkart) != 0:
             if foodid in self.foodkart.keys():
-                self.food[foodid]['STOCK'] = self.food[foodid]['STOCK'] + self.foodkart[foodid]['QTY']
+                self.food[foodid]['STOCK'] = self.food[foodid]['STOCK'] + \
+                    self.foodkart[foodid]['QTY']
                 del self.foodkart[foodid]
                 print('\n!!Deleted Successfully !!\n')
             else:
@@ -329,7 +338,8 @@ def Driver_code():
     obj = FoodApp()
     print(obj.admin_login.__doc__)
     while True:
-        print(f'Welcome to {obj.foodapp_name} We are here to Take Care Of Your Hunger\n')
+        print(
+            f'Welcome to {obj.foodapp_name} We are here to Take Care Of Your Hunger\n')
         print("Please Entre Your Selction from Below Options\n")
         print('1. ADMIN')
         print('2. USER')
@@ -359,7 +369,8 @@ def Driver_code():
                             if X == '1':
                                 print(obj.add_food_item.__doc__)
                                 name = input('Enter the food name : \n')
-                                quantity = input('Enter Updated Quantity like For eg, 100ml, 250gm, 4pieces etc : \n')
+                                quantity = input(
+                                    'Enter Updated Quantity like For eg, 100ml, 250gm, 4pieces etc : \n')
                                 while True:
                                     price = input('Enter Updated Price ₹ : \n')
                                     if price.isnumeric() == True:
@@ -368,7 +379,8 @@ def Driver_code():
                                     else:
                                         print("Only numeric value will execpted")
                                 while True:
-                                    discount = input('Enter Updated Discount in ₹ : ')
+                                    discount = input(
+                                        'Enter Updated Discount in ₹ : ')
                                     if discount.isnumeric() == True or discount.isdecimal() == True:
                                         discount = float(discount)
                                         break
@@ -381,7 +393,8 @@ def Driver_code():
                                         break
                                     else:
                                         print("Only numeric value will execpted")
-                                obj.add_food_item(name, quantity, price, discount, stock)
+                                obj.add_food_item(
+                                    name, quantity, price, discount, stock)
                             elif X == '2':
                                 print("List Of Added Food Items")
                                 obj.view_food_item()
@@ -435,37 +448,46 @@ def Driver_code():
                                         obj.view_food_item()
                                     elif uinput3 == '2':
                                         if len(obj.food) > 0:
-                                            food_id = input("Entre food Id Seprated By comma ex: 1,2,3,4,4,4 \n")
+                                            food_id = input(
+                                                "Entre food Id Seprated By comma ex: 1,2,3,4,4,4 \n")
                                             for i in food_id:
                                                 if i.isnumeric() == True:
                                                     obj.add_food_kart(i)
                                                 else:
                                                     pass
                                             while True:
-                                                print("1. Show Kart\n2. Place Order\n3.Back ")
-                                                oinput = input("Entre Your Choice \n")
+                                                print(
+                                                    "1. Show Kart\n2. Place Order\n3.Back ")
+                                                oinput = input(
+                                                    "Entre Your Choice \n")
                                                 if oinput == "1":
                                                     obj.show_kart()
                                                 if oinput == "2":
                                                     if len(obj.foodkart) > 0:
-                                                        print("We are preparing Your Order. ")
+                                                        print(
+                                                            "We are preparing Your Order. ")
                                                         print(
                                                             "After Ready Your Order We Will be delivered at Your Location ")
-                                                        print(f"Address= {obj.user_details['ADDRESS']}")
+                                                        print(
+                                                            f"Address= {obj.user_details['ADDRESS']}")
                                                         obj.orde_history()
                                                         obj.foodkart = {}
                                                         break
                                                     else:
-                                                        print("nothing is added in cart to place your order")
+                                                        print(
+                                                            "nothing is added in cart to place your order")
                                                 elif oinput == "3":
                                                     break
                                                 else:
-                                                    print("Please Give Correct Input")
+                                                    print(
+                                                        "Please Give Correct Input")
                                         else:
-                                            print("No Items Are Available At This Moment/n Please Visit again.")
+                                            print(
+                                                "No Items Are Available At This Moment/n Please Visit again.")
                                     elif uinput3 == '3':
                                         if len(obj.foodkart) > 0:
-                                            foodid = int(input('Enter food id : '))
+                                            foodid = int(
+                                                input('Enter food id : '))
                                             obj.delete_kart_item(foodid)
                                             print("Updated Food Items")
                                             obj.show_kart()
@@ -475,13 +497,17 @@ def Driver_code():
                                         obj.show_kart()
                                         if len(obj.foodkart) > 0:
                                             while True:
-                                                print("1. Place Order\n2.Back ")
-                                                oinput = input("Entre Your Choice \n")
+                                                print(
+                                                    "1. Place Order\n2.Back ")
+                                                oinput = input(
+                                                    "Entre Your Choice \n")
                                                 if oinput == "1":
-                                                    print("We are preparing Your Order. ")
+                                                    print(
+                                                        "We are preparing Your Order. ")
                                                     print(
                                                         "After Ready Your Order We Will be delivered at Your Location ")
-                                                    print(f"Address= {obj.user_details['ADDRESS']}")
+                                                    print(
+                                                        f"Address= {obj.user_details['ADDRESS']}")
                                                     obj.orde_history()
                                                     obj.foodkart = {}
                                                     break
@@ -490,7 +516,8 @@ def Driver_code():
                                                 else:
                                                     print("Invalid Option")
                                         else:
-                                            print("Kart Is Empty Please Add Something...")
+                                            print(
+                                                "Kart Is Empty Please Add Something...")
                                     elif uinput3 == "5":
                                         break
                             elif uinput2 == '2':
@@ -520,4 +547,3 @@ if __name__ == "__main__":
     Driver_code()
 
 print('THANK YOU VISIT AGAIN :')
-
