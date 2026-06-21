@@ -82,7 +82,7 @@ main.py
         obj.run() to start the interactive menu, finishing with a goodbye
         message.
 
-====================================================================================================
+
 Abstraction: AbstractApp forces every concrete app to define its
 own register()/login(), while still inheriting all of FoodApp's
 ready-made behaviour.
@@ -103,4 +103,3 @@ managed by the class's functions. Furthermore, using a leading underscore in met
 that these are internal helper methods, effectively hiding complex system navigation logic from 
 external modules and exposing only a clean, simplified interface for interaction between users.
 
-====================================================================================================
