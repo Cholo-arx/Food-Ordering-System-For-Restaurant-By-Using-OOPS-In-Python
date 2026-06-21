@@ -102,4 +102,5 @@ managed by the class's functions. Furthermore, using a leading underscore in met
 (_admin_menu(), _user_menu(), _order_menu()) is a standard Python convention that indicates 
 that these are internal helper methods, effectively hiding complex system navigation logic from 
 external modules and exposing only a clean, simplified interface for interaction between users.
+
 ====================================================================================================
